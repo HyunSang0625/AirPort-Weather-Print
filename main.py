@@ -3,7 +3,7 @@ import json
 import xmltodict
 import pandas as  pd
 import urllib.request as link
-from xml.etree.ElementTree import parse
+import xml.etree.ElementTree as ET 
 import os
 import datetime
 
@@ -36,10 +36,7 @@ if (airport == rksi):
     print("RKSI / 인천국제공항 | 인천광역시 중구 운서동")
     # Inculde API 
     response = link.urlopen(airport_api + rksi).read()
-    xmldoc = parse(response)
-    root = xmldoc.getroot()
-    main_print = root.findtext('metarMsg')
-    print(main_print)
+    print(response)
     print("Lookup Time(조회시간) : ", date)
 else:
     print(error_waring)    
