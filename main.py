@@ -11,6 +11,8 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import requests
 from pprint import pprint
+from PyPDF2 import PdfFileReader, PdfFileWriter
+
 
 rksi = "RKSI"
 rkss = "RKSS"
@@ -29,7 +31,8 @@ rkpu = "RKPU"
 rkps ="RKPS" 
 rkjk = "RKJK"
 
-airport_api = "http://amoapi.kma.go.kr/amoApi/metar?icao="
+airport_api_metar = "http://amoapi.kma.go.kr/amoApi/metar?icao="
+airport_api_taf = "http://amoapi.kma.go.kr/amoApi/taf?icao="
 date = datetime.datetime.now()
 
 welecome = "안녕하세요! Metar 자동 프린트 시스템입니다.\n본 시스템은 항공기상청 API를 이용하여서 불러옵니다."
@@ -41,7 +44,7 @@ airport = input("ICAO Code Capital Letter : ")
 if (airport == rksi):
     print("RKSI / 인천국제공항 | 인천광역시 중구 운서동")
     # Inculde API 
-    api_link = airport_api + rksi
+    api_link = airport_api_metar + rksi
     print("AIRPORT WEATHER API LINK INCLUDE ")
     r = requests.get(api_link)
     root = ET.fromstring(r.text)
@@ -56,9 +59,18 @@ if (airport == rksi):
 
     jsonString = json.dumps(xmltodict.parse(xmlString), indent=4)
     print("XML => JSON Save")
-    json_link = '/Users/parkhyunsang/Documents/Development/Air_Weather_Print/RKSI_weather.json'
-    print(json_link)
-    
+    with open('RKSI_weather.json') as json_file:
+        json_data = json.load(json_file)
+        json_main = json_data['response']
+        json_body = json_main['body']
+        json_items = json_body['items']
+        json_item = json_items['item']
+        print(json_main)
+        print('===========================================================')
+        print("Metar Weather")
+        weather_metar = json_item['metarMsg']
+        print(weather_metar)
+        print('===========================================================')
     print("조회 시간 : ", date)
 else: 
     print(error_waring)    
