@@ -21,9 +21,8 @@ rkpu = "RKPU"
 rkps ="RKPS" 
 rkjk = "RKJK"
 
-datetime.datatime.strptime(datetime.now(), '%Y-%m-%d %H:%M:%S')
-
 airport_api = "http://amoapi.kma.go.kr/amoApi/metar?icao="
+date = datetime.datetime.now()
 
 waring = "안녕하세요! Metar 자동 프린트 시스템입니다.\n 본 시스템은 항공기상청 API를 이용하여서 불러옵니다."
 error_waring = "Error : ICAO Code entered incorrectly | 다시 입력하세요."
@@ -34,7 +33,7 @@ airport = input("ICAO Code Capital Letter : ")
 
 if (airport == rksi):
     print("RKSI / 인천국제공항")
-    print(date)
+    print("Lookup Time(조회시간) : ", date)
 else:
     print(error_waring)    
     exit()
