@@ -24,12 +24,13 @@ rkjk = "RKJK"
 time = datetime.datetime.now()
 date = time.year, time.month, time.day, time.hour, time.minute, time.second, time.microsecond
 
-airport_api = "http://amoapi.kma.go.kr/amoApi/metar?icao=RKSI"
+airport_api = "http://amoapi.kma.go.kr/amoApi/metar?icao="
 
 waring = "안녕하세요! Metar 자동 프린트 시스템입니다.\n 본 시스템은 항공기상청 API를 이용하여서 불러옵니다."
 error_waring = "Error : ICAO Code entered incorrectly | 다시 입력하세요."
 
-# Airport Input ICAO
+# Airport Input ICAOgit push -u origin master
+
 airport = input("ICAO Code Capital Letter : ")
 
 if (airport == rksi):
