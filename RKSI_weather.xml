@@ -1,0 +1,15 @@
+<response>
+	<header>
+		<resultCode>0000</resultCode>
+		<resultMsg>OK</resultMsg>
+	</header>
+	<body>
+		<items>
+			<item>
+				<icaoCode>RKSI</icaoCode>
+				<airportName>&#51064;&#52380;&#44277;&#54637;</airportName>
+				<metarMsg>METAR RKSI 121400Z 32012KT CAVOK 14/06 Q1010 NOSIG=</metarMsg>
+			</item>
+		</items>
+	</body>
+</response>

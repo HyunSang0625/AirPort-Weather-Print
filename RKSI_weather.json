@@ -1,0 +1,17 @@
+{
+    "response": {
+        "header": {
+            "resultCode": "0000",
+            "resultMsg": "OK"
+        },
+        "body": {
+            "items": {
+                "item": {
+                    "icaoCode": "RKSI",
+                    "airportName": "\uc778\ucc9c\uacf5\ud56d",
+                    "metarMsg": "METAR RKSI 121400Z 32012KT CAVOK 14/06 Q1010 NOSIG="
+                }
+            }
+        }
+    }
+}
