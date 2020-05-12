@@ -21,8 +21,7 @@ rkpu = "RKPU"
 rkps ="RKPS" 
 rkjk = "RKJK"
 
-time = datetime.datetime.now()
-date = time.year, time.month, time.day, time.hour, time.minute, time.second, time.microsecond
+datetime.datatime.strptime(datetime.now(), '%Y-%m-%d %H:%M:%S')
 
 airport_api = "http://amoapi.kma.go.kr/amoApi/metar?icao="
 
@@ -35,7 +34,7 @@ airport = input("ICAO Code Capital Letter : ")
 
 if (airport == rksi):
     print("RKSI / 인천국제공항")
-    print("조회 시간: " + time.localtime(time.time()))
+    print(date)
 else:
     print(error_waring)    
     exit()
