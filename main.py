@@ -35,10 +35,11 @@ airport_api_metar = "http://amoapi.kma.go.kr/amoApi/metar?icao="
 airport_api_taf = "http://amoapi.kma.go.kr/amoApi/taf?icao="
 date = datetime.datetime.now()
 
-welecome = "안녕하세요! Metar 자동 프린트 시스템입니다.\n본 시스템은 항공기상청 API를 이용하여서 불러옵니다."
+welecome = "\n안녕하세요! Metar 자동 프린트 시스템입니다.\n본 시스템은 항공기상청 API를 이용하여서 불러옵니다.\n"
+info = "\n==========================================\n개발자 소개\n박현상\nhyun.sang@parkhyunsang.com\nhttp://parkhuyunsang.com\n==========================================\n"
 error_waring = "Error : ICAO Code entered incorrectly"
 
-print(welecome)
+print(welecome + info)
 airport = input("ICAO Code Capital Letter : ")
 
 if (airport == rksi):
@@ -71,6 +72,13 @@ if (airport == rksi):
         weather_metar = json_item['metarMsg']
         print(weather_metar)
         print('===========================================================')
+        note_path = "RKSI_weather.txt"
+        with open(note_path, "w") as f:
+            local_time = "조회시간 : ", date
+            note_waring = '! Waring ! 지역항공항행협정에 의하여 "인천국제공항"만 30분 간격관측'
+            f.write(weather_metar)
+            print("입력 완료",date)
+            print('===========================================================')
     print("조회 시간 : ", date)
 else: 
     print(error_waring)    
