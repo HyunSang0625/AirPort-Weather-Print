@@ -10,9 +10,6 @@ import requests
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import requests
-from pprint import pprint
-from PyPDF2 import PdfFileReader, PdfFileWriter
-
 
 rksi = "RKSI"
 rkss = "RKSS"
@@ -79,6 +76,8 @@ if (airport == rksi):
             f.write(weather_metar)
             print("입력 완료",date)
             print('===========================================================')
+    printer = input("Printer Y or N : ")
+
     print("조회 시간 : ", date)
 else: 
     print(error_waring)    
