@@ -56,8 +56,12 @@ if (airport == rksi):
     print(xmlString)
 
     jsonString = json.dumps(xmltodict.parse(xmlString), indent=4)
-    print("XML => JSON Save")
-    with open('RKSI_weather.json') as json_file:
+    print(jsonString)
+    with open("RKSI_weather.json", 'w') as f:
+        f.write(jsonString)
+        print("JSON File Save Complete !!")
+        print(jsonString)
+    with open("RKSI_weather.json") as json_file:
         json_data = json.load(json_file)
         json_main = json_data['response']
         json_body = json_main['body']
@@ -77,8 +81,12 @@ if (airport == rksi):
             print("입력 완료",date)
             print('===========================================================')
     printer = input("Printer Y or N : ")
-
-    print("조회 시간 : ", date)
+    if (printer == "Y"):
+        print("Wait...")
+    if(printer == "N"):
+        print("OK Good Bye")
 else: 
     print(error_waring)    
     exit("PLZ Return Input")
+
+print("조회 시간 : ", date)
