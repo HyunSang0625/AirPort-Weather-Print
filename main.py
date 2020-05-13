@@ -10,6 +10,9 @@ import requests
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import requests
+import win32print
+import win32ui
+import win32con
 
 rksi = "RKSI"
 rkss = "RKSS"
@@ -75,16 +78,30 @@ if (airport == rksi):
         print('===========================================================')
         note_path = "RKSI_weather.txt"
         with open(note_path, "w") as f:
-            local_time = "조회시간 : ", date
-            note_waring = '! Waring ! 지역항공항행협정에 의하여 "인천국제공항"만 30분 간격관측'
-            f.write(weather_metar)
+            local_time = "\n조회시간 : ", date
+            f.write(weather_metar, local_time)
             print("입력 완료",date)
             print('===========================================================')
     printer = input("Printer Y or N : ")
     if (printer == "Y"):
         print("Wait...")
+        INCH = 1440
+        
+        weather_metar_printer = weather_metar, "\n조회시간 : ", date
+        hDC = win32ui.CreateDC ()
+        hDC.CreatePrinterDC (win32print.GetDefaultPrinter ())
+        print("Printing output in progress")
+        hDC.StartDoc ("Weather")   # 프린트 작업 문서 이름에 출력
+        hDC.StartPage ()
+        hDC.SetMapMode (win32con.MM_TWIPS)
+        print("Printed Output Completed")
+        hDC.DrawText (weather_metar_printer,(0, INCH * -1, INCH * 8, INCH * -2), win32con.DT_LEFT)
+        hDC.EndPage ()
+        hDC.EndDoc ()
+        print("Printed Output Completed")
     if(printer == "N"):
         print("OK Good Bye")
+        exit()
 else: 
     print(error_waring)    
     exit("PLZ Return Input")
